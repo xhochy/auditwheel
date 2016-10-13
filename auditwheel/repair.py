@@ -80,8 +80,7 @@ def repair_wheel(wheel_path: str, abi: str, lib_sdir: str, out_dir: str,
                 soname_map[soname] = (new_soname, new_path)
                 check_call(['patchelf', '--replace-needed', soname, new_soname, fn])
 
-            if len(ext_libs) > 0:
-                patchelf_set_rpath(fn, dest_dir)
+            patchelf_set_rpath(fn, dest_dir)
 
         # we grafted in a bunch of libraries and modifed their sonames, but
         # they may have internal dependencies (DT_NEEDED) on one another, so
