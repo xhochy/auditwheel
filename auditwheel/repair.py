@@ -40,6 +40,7 @@ def verify_patchelf():
 def repair_wheel(wheel_path: str, abi: str, lib_sdir: str, out_dir: str,
                  update_tags: bool) -> Optional[str]:
 
+    print("Repairing wheel: " + wheel_path)
     external_refs_by_fn = get_wheel_elfdata(wheel_path)[1]
     soname_map = {}  # type: Dict[str, str]
     if not isabs(out_dir):
